@@ -16,7 +16,7 @@ COPY . .
 # Compilamos:
 # -w -s: reduce el tamaño del binario eliminando información de depuración
 # CGO_ENABLED=0: asegura que el binario sea estático y no dependa de librerías del SO
-RUN CGO_ENABLED=0 GOOS=linux GOARCH=arm64 go build -ldflags="-w -s" -o ddns-cloudflare cmd/main.go
+RUN CGO_ENABLED=0 go build -ldflags="-w -s" -o ddns-cloudflare cmd/main.go
 
 # --- ETAPA 2: Imagen Final ---
 FROM scratch
